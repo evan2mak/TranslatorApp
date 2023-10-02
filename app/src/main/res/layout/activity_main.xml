@@ -8,37 +8,43 @@
     android:layout_margin="10dp"
     tools:context=".MainActivity">
 
+    <!-- Layout for radio button labels -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- Label for source language-->
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Source Language">
         </TextView>
+
+        <!-- Label for translation  -->
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Translation">
         </TextView>
-
     </LinearLayout>
 
+    <!-- Horizontal layout for source and target language radio buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- RadioGroup for source language selection -->
         <RadioGroup
             android:id="@+id/sourceLanguageRadioGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!-- RadioButtons for English, Spanish, and German -->
             <RadioButton
                 android:id="@+id/EnglishLanguageButton"
                 android:layout_width="match_parent"
@@ -55,12 +61,15 @@
                 android:layout_height="wrap_content"
                 android:text="German" />
         </RadioGroup>
+
+        <!-- RadioGroup for target language selection -->
         <RadioGroup
             android:id="@+id/targetLanguageRadioGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!-- RadioButton for Spanish, German, and English translation buttons -->
             <RadioButton
                 android:id="@+id/SpanishTranslationButton"
                 android:layout_width="match_parent"
@@ -79,6 +88,7 @@
         </RadioGroup>
     </LinearLayout>
 
+    <!-- Fragment container for translation fragment -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

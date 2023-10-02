@@ -5,13 +5,17 @@ import com.google.mlkit.nl.languageid.LanguageIdentification
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 
+// This is a ViewModel class that manages translation-related data and operations
+// It handles language identification, translation, and updates LiveData for UI
+// The functions within the ViewModel perform language identification, translation, and error handling
 class TranslationViewModel : ViewModel() {
-    var sourceLanguage: String = "" // Default source language (English)
-    var targetLanguage: String = "" // Default target language (Spanish)
+    var sourceLanguage: String = ""
+    var targetLanguage: String = ""
 
     val sourceTextLiveData = MutableLiveData<String>()
     val translatedTextLiveData = MutableLiveData<String>()
 
+    // Identify the language and translate the text based on the identified language
     fun identifyAndTranslateText(text: String) {
         val languageIdentifier = LanguageIdentification.getClient()
         languageIdentifier.identifyLanguage(text)
@@ -32,35 +36,39 @@ class TranslationViewModel : ViewModel() {
                 }
             }
             .addOnFailureListener {
-                // Model couldn’t be loaded or other internal error.
+                // Both buttons must be selected
                 translatedTextLiveData.postValue("Make sure both buttons are selected.")
             }
     }
 
+    // Identify the source language and throw appropriate errors
     fun identifySourceLanguage() {
         val textToIdentify = sourceTextLiveData.value ?: ""
         val languageIdentifier = LanguageIdentification.getClient()
         languageIdentifier.identifyLanguage(textToIdentify)
             .addOnSuccessListener { languageCode ->
-                if (languageCode == "und") {
+                if (languageCode == "und" && textToIdentify != "") {
                     // Cannot identify language
                     translatedTextLiveData.postValue("Can't identify language.")
-                } else {
+                }
+                else if (textToIdentify != ""){
                     if (languageCode == sourceLanguage) {
                         // Language matches the source language
                         translateText()
-                    } else {
+                    }
+                    else {
                         // Language does not match the source language
                         translatedTextLiveData.postValue("Language mismatch. Type your message in the selected language.")
                     }
                 }
             }
             .addOnFailureListener {
-                // Model couldn’t be loaded or other internal error.
+                // Both buttons must be selected
                 translatedTextLiveData.postValue("Make sure both buttons are selected.")
             }
     }
 
+    // Function that translates the text
     private fun translateText(text: String) {
         val translatorOptions = TranslatorOptions.Builder()
             .setSourceLanguage(sourceLanguage)
@@ -86,11 +94,12 @@ class TranslationViewModel : ViewModel() {
                     }
             }
             .addOnFailureListener { exception ->
-                // Model couldn’t be downloaded or other internal error.
+                // Both buttons must be pressed
                 translatedTextLiveData.postValue("Make sure both buttons are selected.")
             }
     }
 
+    // Helper function for main activity call
     fun translateText() {
         val textToTranslate = sourceTextLiveData.value ?: ""
         translateText(textToTranslate)

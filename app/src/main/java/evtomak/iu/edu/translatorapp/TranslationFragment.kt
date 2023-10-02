@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import evtomak.iu.edu.translatorapp.databinding.FragmentTranslationBinding
 
+// This class  is a fragment that displays translation results and allows real-time text translation
+// It inflates a layout, sets up a ViewModel for translation operations, and adds a TextWatcher to the EditText for real-time translation updates
+// It observes changes in the translated text and updates the UI accordingly
 class TranslationFragment : Fragment() {
     private var _binding: FragmentTranslationBinding? = null
     private val binding get() = _binding!!
@@ -26,7 +29,7 @@ class TranslationFragment : Fragment() {
 
         val translationEditText = binding.translationEditText
 
-        // Add a TextWatcher to the EditText for real-time translation
+        // TextWatcher to the EditText for real-time translation
         translationEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // Before text changes, do nothing

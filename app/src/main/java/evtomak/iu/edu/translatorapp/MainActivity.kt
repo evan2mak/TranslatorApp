@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import evtomak.iu.edu.translatorapp.databinding.ActivityMainBinding
 
+// This class sets up the UI and handles interactions to select source and target languages
+// This communicates with the TranslationViewModel to perform language identification and translation
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: TranslationViewModel
@@ -25,16 +27,16 @@ class MainActivity : AppCompatActivity() {
         sourceLanguageRadioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.EnglishLanguageButton -> {
-                    viewModel.sourceLanguage = "en"
-                    viewModel.identifySourceLanguage()
+                    viewModel.sourceLanguage = "en" // Set source language to English
+                    viewModel.identifySourceLanguage() // Identify the source language
                 }
                 R.id.SpanishLanguageButton -> {
-                    viewModel.sourceLanguage = "es"
-                    viewModel.identifySourceLanguage()
+                    viewModel.sourceLanguage = "es" // Set source language to Spanish
+                    viewModel.identifySourceLanguage() // Identify the source language
                 }
                 R.id.GermanLanguageButton -> {
-                    viewModel.sourceLanguage = "de"
-                    viewModel.identifySourceLanguage()
+                    viewModel.sourceLanguage = "de" // Set source language to German
+                    viewModel.identifySourceLanguage() // Identify the source language
                 }
             }
         }
@@ -42,16 +44,16 @@ class MainActivity : AppCompatActivity() {
         targetLanguageRadioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.SpanishTranslationButton -> {
-                    viewModel.targetLanguage = "es"
-                    viewModel.translateText()
+                    viewModel.targetLanguage = "es" // Set target language to Spanish
+                    viewModel.translateText() // Translate text
                 }
                 R.id.GermanTranslationButton -> {
-                    viewModel.targetLanguage = "de"
-                    viewModel.translateText()
+                    viewModel.targetLanguage = "de" // Set target language to German
+                    viewModel.translateText() // Translate text
                 }
                 R.id.EnglishTranslationButton -> {
-                    viewModel.targetLanguage = "en"
-                    viewModel.translateText()
+                    viewModel.targetLanguage = "en" // Set target language to English
+                    viewModel.translateText() // Translate text
                 }
             }
         }
