@@ -2,14 +2,23 @@
 This app is a translation app that requires two selections: a source language and a target language. This app allows the user to translate the source language to a target language of their choosing. The functionality is described in more detail below:
 
 [X] The user opens the app.
+
 [X] The user can select the source language by clicking on radio buttons for English, Spanish, or German.
+
 [X] The user can select the target language by clicking on radio buttons for Spanish, German, or English.
+
 [X] If the user does not select a source language and begins typing, the user will see a message that reads: "Select a source language and type your message using that language."
+
 [X] If the user does not select a target language but has a source language selected and begins typing, the user will see a message that reads: "Make sure both buttons are selected."
+
 [X] If the user does not type in the correct language that they have selected as a source language, then the user will see a message that reads: "Can't identify language."
+
 [X] If the user switches the source language to a new language after typing, the same error message is thrown.
+
 [X] If the user switches to a new target language, the input is translated to the new target language.
+
 [X] If the source language and target language are the same, it handles the translation correctly by showing the input ("Hello" = "Hello" when both are English).
+
 [X] If everything is handled correctly with no errors, the input will be translated in real-time.
 
 The following functions/extensions are implemented:
